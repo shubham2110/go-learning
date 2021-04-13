@@ -1,6 +1,9 @@
-from docker.cdc.iocl.co.in:5001/golang:godoc
+from golang:latest
+
+RUN go get golang.org/x/tools/cmd/godoc
+
 EXPOSE 6060
 
-CMD godoc -http=:6060
+CMD /go/bin/godoc -http=:6060
 
 
