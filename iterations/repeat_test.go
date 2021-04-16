@@ -13,3 +13,9 @@ func TestRepeat(t *testing.T) {
 	}
 
 }
+
+func BenchmarkRepeat(t *testing.B) {
+	for i := 0; i < t.N; i++ {
+		Repeat("a")
+	}
+}
