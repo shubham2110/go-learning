@@ -1,6 +1,5 @@
-package main
+package integer
 
-func Add(x ,y int) (z int) {
-	z = x+y
-	return
+func Add(x, y int) int {
+	return x + y
 }
