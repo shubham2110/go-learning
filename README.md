@@ -38,6 +38,15 @@ reflect is not 'type safe' i.e. one can compare any two types
 
 ```go
 if !reflect.DeepEqual("aaaa", []int{1,2,3}){
-    
+
 }
+```
+
+## Append
+
+'append' function appends element behind the slice, and returns a copy of slice. 
+
+```go
+sums = append(sums, Sum(numbers))
+// in above example, we has to intialize sum with new value of append(sums, Sum(numers)) because it doesn't itself appends in sums.. append function sends a copy
 ```
