@@ -50,3 +50,16 @@ if !reflect.DeepEqual("aaaa", []int{1,2,3}){
 sums = append(sums, Sum(numbers))
 // in above example, we has to intialize sum with new value of append(sums, Sum(numers)) because it doesn't itself appends in sums.. append function sends a copy
 ```
+
+## t.Helper()
+
+'Helper' function make sures even if error is coming in the helper function, error will be pointed out by compiter at line where helper function was called. 
+
+```go
+	checkSums := func(t testing.TB, got, want []int) {
+		t.Helper()
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("got %v want %v", got, want)
+		}
+	}
+```
