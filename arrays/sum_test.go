@@ -1,8 +1,18 @@
 package arrays
 
 import (
+	"reflect"
 	"testing"
 )
+
+func TestSumAll(t *testing.T) {
+	got := SumAll([]int{1, 2, 3, 4}, []int{1, 2, 3})
+	want := []int{10, 6}
+
+	if !reflect.DeepEqual(got, want) {
+		t.Errorf("got %v  want %v", got, want)
+	}
+}
 
 func TestSum(t *testing.T) {
 
