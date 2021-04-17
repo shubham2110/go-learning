@@ -39,16 +39,16 @@ func TestArea(t *testing.T) {
 
 	t.Run("Checking for 10.0 and 20.0 for rectangle ", func(t *testing.T) {
 
-		got := Area(Rectangle{10.0, 20.0})
+		got := Rectangle{10.0, 20.0}.Area()
 		want := 200.00
 		assert(t, got, want)
 	})
 
-	// t.Run("Checking for Circle with radius 10 ", func(t *testing.T) {
+	t.Run("Checking for Circle with radius 10 ", func(t *testing.T) {
 
-	// 	got := Area(Circle{10.0})
-	// 	want := 314.1592653589793
-	// 	assert(t, got, want)
-	// })
+		got := Circle{10.0}.Area()
+		want := 314.1592653589793
+		assert(t, got, want)
+	})
 
 }
