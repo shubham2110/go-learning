@@ -4,39 +4,42 @@ import "testing"
 
 func TestPerimeter(t *testing.T) {
 
-	assert := func(t testing.TB, got, want float64) {
+	testcases := []struct {
+		name  string
+		shape Shape
+		want  float64
+	}{
+		{name: "Rectangle testing", shape: Rectangle{Width: 12, Height: 6}, want: 36.00},
+		{name: "circle testing", shape: Circle{Radius: 10}, want: 62.83185307179586},
+	}
+
+	assert := func(t testing.TB, shape Shape, want float64) {
 		t.Helper()
+		got := shape.Perimeter()
 		if got != want {
-			t.Errorf("got %.2f   want %.2f ", got, want)
+			t.Errorf("got %g   want %g ", got, want)
 		}
 	}
 
-	t.Run("Testing got 10 and 10 ", func(t *testing.T) {
-		got := Perimeter(Rectangle{10.0, 10.0})
-		want := 40.0
-		assert(t, got, want)
-
-	})
-
-	t.Run("Testing got 0.125 and 0.125  ", func(t *testing.T) {
-		rectangle := Rectangle{0.125, 0.125}
-		got := Perimeter(rectangle)
-		want := 0.50
-		assert(t, got, want)
-
-	})
+	for _, testcase := range testcases {
+		t.Run(testcase.name, func(t *testing.T) {
+			assert(t, testcase.shape, testcase.want)
+		})
+	}
 
 }
 
 func TestArea(t *testing.T) {
 
-	// areaTests := []struct {
-	// 	shape Shape
-	// 	want  float64
-	// }{
-	// 	{Rectangle{10.0, 20.0}, 200.00},
-	// 	{Circle{10}, 314.1592653589793},
-	// }
+	areaTests := []struct {
+		name  string
+		shape Shape
+		want  float64
+	}{
+		{name: "Rectangle testing", shape: Rectangle{Width: 12, Height: 6}, want: 72.0},
+		{name: "circle testing", shape: Circle{Radius: 10}, want: 314.1592653589793},
+		{name: "triangle testing", shape: Triangle{Base: 12, Height: 6}, want: 36.0},
+	}
 
 	assert := func(t testing.TB, shape Shape, want float64) {
 		t.Helper()
@@ -46,12 +49,10 @@ func TestArea(t *testing.T) {
 		}
 	}
 
-	t.Run("Checking for 10.0 and 20.0 for rectangle ", func(t *testing.T) {
-		assert(t, Rectangle{10.0, 20.0}, 200.00)
-	})
-
-	t.Run("Checking for Circle with radius 10 ", func(t *testing.T) {
-		assert(t, Circle{10.0}, 314.1592653589793)
-	})
+	for _, testcase := range areaTests {
+		t.Run(testcase.name, func(t *testing.T) {
+			assert(t, testcase.shape, testcase.want)
+		})
+	}
 
 }
