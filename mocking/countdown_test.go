@@ -1,3 +1,4 @@
+// TODO: Make tests to use configurable sleeper
 package main
 
 import (
