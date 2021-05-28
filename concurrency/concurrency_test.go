@@ -12,17 +12,32 @@ func slowStubWebsiteChecker(_ string) bool {
 }
 
 func BenchmarkCheckWebsites(b *testing.B) {
-	urls := make([]string, 100)
-	for i := 0; i < len(urls); i++ {
-		urls[i] = "a url"
+	websites := []string{
+		"http://google.com",
+		"http://blog.gypsydave5.com",
+		"waat://furhurterwe.geds",
 	}
 
 	for i := 0; i < b.N; i++ {
-		CheckWebsites(slowStubWebsiteChecker, urls)
+		CheckWebsites(mockWebsiteChecker, websites)
 	}
+
+	// if !reflect.DeepEqual(want, got) {
+	// 	t.Fatalf("Wanted %v, got %v", want, got)
+	// }
+
+	// urls := make([]string, 100)
+	// for i := 0; i < len(urls); i++ {
+	// 	urls[i] = "a url"
+	// }
+
+	// for i := 0; i < b.N; i++ {
+	// 	CheckWebsites(slowStubWebsiteChecker, urls)
+	// }
 }
 
 func mockWebsiteChecker(url string) bool {
+	time.Sleep(20 * time.Millisecond)
 	if url == "waat://furhurterwe.geds" {
 		return false
 	}
